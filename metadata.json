@@ -1,0 +1,7 @@
+{
+  "name": "TravelMind AI",
+  "description": "Your trip. Your budget. Your interests. One intelligent itinerary.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

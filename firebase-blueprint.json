@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile with authentication and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "format": "email", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 1024 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "trip": {
+      "title": "Trip",
+      "description": "Travel itinerary record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "destination": { "type": "string", "maxLength": 128 },
+        "origin": { "type": "string", "maxLength": 128 },
+        "duration": { "type": "number" },
+        "travelers": { "type": "number" },
+        "totalBudget": { "type": "number" },
+        "estimatedCost": { "type": "number" },
+        "currency": { "type": "string", "maxLength": 10 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "destination", "totalBudget"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/user" },
+      "description": "User account documents"
+    },
+    "/users/{userId}/trips/{tripId}": {
+      "schema": { "$ref": "#/entities/trip" },
+      "description": "User trips collection"
+    },
+    "/test/{testId}": {
+      "schema": "object",
+      "description": "Connection test collection"
+    }
+  }
+}
